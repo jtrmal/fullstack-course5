@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="eatCheck">
+<head>
+    <meta charset="UTF-8">
+    <title>Eat check!</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="eatCheckController">
+<h1>What did you eat?</h1>
+<div>
+    <input type="text" ng-model="foodList" ng-keyup="parseFoodList()"></input>
+    <br/>
+    <ul>
+        <li ng-repeat="food in foodArray track by $index">{{food}}</li>
+    </ul>
+    <br>
+    <button ng-click="checkHowMuch()">How much did I eat?</button>
+    <br>
+    {{verdict}}
+</div>
+</body>
+</html>
