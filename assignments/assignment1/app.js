@@ -4,23 +4,37 @@
 (function () {
     'use strict';
 
-    angular.module('eatCheck', [])
-        .controller('eatCheckController', function ($scope) {
+    angular.module('LunchCheck', [])
+        .controller('LunchCheckController', LunchCheckControllerImpl);
+
+    LunchCheckControllerImpl.$inject = ['$scope'];
+    function LunchCheckControllerImpl($scope) {
             $scope.foodList = "";
 
             $scope.foodArray = [];
+            $scope.verdict = 'empty';
+            $scope.verdictMessage = '';
 
             $scope.parseFoodList = function () {
+                $scope.verdict = 'empty';
+                $scope.verdictMessage = '';
+
                 var foodArray = $scope.foodList.split(/[ ,]*,/);
                 $scope.foodArray = foodArray.filter(Boolean);
             };
 
             $scope.checkHowMuch = function () {
                 if ($scope.foodArray.length > 3) {
-                    $scope.verdict = 'Too much!';
+                    $scope.verdictMessage = 'Too much!';
+                    $scope.verdict = 'toomuch';
+                } else if ($scope.foodArray.length <= 0) {
+                    $scope.verdictMessage = 'Please enter data first!';
+                    $scope.verdict = 'needdata';
                 } else {
-                    $scope.verdict = 'Enjoy!';
+                    $scope.verdictMessage = 'Enjoy!';
+                    $scope.verdict = 'enjoy';
                 }
             };
-        });
+    };
+
 })();

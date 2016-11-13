@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html lang="en"  ng-app="eatCheck">
+<html lang="en"  ng-app="LunchCheck">
 <head>
     <meta charset="UTF-8">
-    <title>Eat check!</title>
+    <title>Lunch Check</title>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
+
+    <style>
+        .message-toomuch { font-size: 1.3em; font-weight: bold; color: green; border: 5px solid green;}
+        .message-enjoy { font-size: 1.3em; font-weight: bold; color: green; border: 5px solid green;}
+        .message-needdata { font-size: 1.3em; font-weight: normal; color: red; border: 5px solid red;}
+    </style>
+
 </head>
-<body ng-controller="eatCheckController">
+<body ng-controller="LunchCheckController">
 <h1>What did you eat?</h1>
 <div>
-    <input type="text" ng-model="foodList" ng-keyup="parseFoodList()"></input>
-    <br/>
+    Please enter a coma-separated list of what you've eaten. Empty fields do not count towards your food consumption.
+</div>
+<br>
+<div>
+    <input type="text"
+           ng-model="foodList"
+           ng-keyup="parseFoodList()"
+           placeholder="list comma separated dishes you usually have for lunch"></input>
+    <br>
     <ul>
         <li ng-repeat="food in foodArray track by $index">{{food}}</li>
     </ul>
     <br>
     <button ng-click="checkHowMuch()">How much did I eat?</button>
     <br>
-    {{verdict}}
+    <div class="message-{{verdict}}">{{verdictMessage}}</div>
+
 </div>
 </body>
 </html>
