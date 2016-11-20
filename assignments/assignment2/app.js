@@ -14,23 +14,19 @@
         var ctrl = this;
 
         ctrl.numItems = function () {
-            console.log("getNumItems");
             return cart.getItemsToBuy().length;
         };
 
         ctrl.getItems = function () {
-            console.log("getItems");
             return cart.getItemsToBuy();
         };
 
         ctrl.buyItem = function (index) {
-            console.log("buyItem");
             cart.buyItem(index);
             return true;
         };
 
         ctrl.removeItem = function (index) {
-            console.log("remvoeItem");
             cart.removeItem(index);
             return true;
         }
@@ -42,12 +38,10 @@
         var ctrl = this;
 
         ctrl.numItems = function () {
-            console.log("getNumItems");
             return checkout.getBoughtItems().length;
         };
 
         ctrl.getItems = function () {
-            console.log("getItems");
             return checkout.getBoughtItems();
         }
 
@@ -63,7 +57,9 @@
             {name: "Steak",
             count: 4},
             {name: "Onions",
-            count: 20}
+            count: 20},
+            {name: "Flowers for Emily",
+            count: 10}
         ];
 
         var itemsBought = [];
