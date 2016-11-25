@@ -36,8 +36,8 @@
           <button class="btn btn-primary" ng-click="filter.search(query)">Narrow It Down For Me!</button>
       </div>
       <p>
-      <div class="form-group narrow-button" ng-if="filter.results.length"> found {{filter.results.length}} entries...
-      </div>
+      <div class="form-group narrow-button" ng-if="filter.results && filter.results.length"> found {{filter.results.length}} entry/entries...</div>
+      <div class="form-group narrow-button" ng-if="filter.results && filter.results.length == 0"> Nothing is found</div>
       </p>
       <!-- found-items should be implemented as a component -->
       <found-items found-items="filter.results" on-remove="filter.removeItem"

@@ -25,7 +25,7 @@
     function NarrowItDownController (items) {
         var ctrl = this;
 
-        ctrl.results = [];
+        ctrl.results = undefined;
         ctrl.search_in_progress = false;
 
         ctrl.search = function (query) {
